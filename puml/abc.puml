@@ -1,0 +1,15 @@
+@startuml
+
+actor   发送人 as  sender
+entity  系统  as  sys
+actor   审核人 as  auditor
+actor   接收人 as  receiver
+
+sender -> sys:填写发送表单
+sys -> sys: 将表单放入队列
+sys -> auditor: 通知审核人
+auditor -> sys: 获取待审核表单，提交审核意见
+sys -> receiver:  通知接收人
+receiver -> sys: 获取信息
+
+@enduml
